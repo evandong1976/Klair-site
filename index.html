@@ -311,25 +311,68 @@
       <div class="req"><span class="opt nice">Optional</span><b>Graphify, Chrome, TigerData</b><span>Knowledge graphs, whole pages, and a cloud copy of each project.</span></div>
     </div>
 
+    <details class="quick rv" id="quickstart">
+      <summary><b>Already have Node 22+, pnpm and Git?</b><span>Here's the short version.</span></summary>
+      <div class="inner">
+        <div class="term">
+          <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span></div>
+          <div class="cmds">
+            <div><span class="c"># Get the code and its packages</span>
+              <div class="cmd"><code><span class="p">$ </span>git clone https://github.com/evandong1976/Klair.git &amp;&amp; cd Klair &amp;&amp; pnpm install</code><button class="copy" type="button" data-copy="git clone https://github.com/evandong1976/Klair.git &amp;&amp; cd Klair &amp;&amp; pnpm install">Copy</button></div></div>
+            <div><span class="c"># Make your settings file, paste in your OpenRouter key and save</span>
+              <div class="cmd"><code><span class="p">$ </span>cp -n .env.example .env.local; open -e .env.local</code><button class="copy" type="button" data-copy="cp -n .env.example .env.local; open -e .env.local">Copy</button></div></div>
+            <div><span class="c"># Build Klair and open it</span>
+              <div class="cmd"><code><span class="p">$ </span>pnpm app</code><button class="copy" type="button" data-copy="pnpm app">Copy</button></div></div>
+          </div>
+        </div>
+        <p class="note">Then allow <b>Screen recording</b> in the Start window and reopen Klair (<a href="#step-6">step 6</a>). Graphify, the Chrome extension and the fn key are optional: steps <a href="#step-4">4</a>, <a href="#step-7">7</a> and <a href="#step-8">8</a>.</p>
+      </div>
+    </details>
+
+    <div class="guide">
+      <nav class="rail" aria-label="Install steps">
+        <canvas class="pixelated" id="railFlower" aria-hidden="true"></canvas>
+        <ol>
+          <li><a href="#step-1"><b>1</b><span>Tools</span></a></li>
+          <li><a href="#step-2"><b>2</b><span>Code</span></a></li>
+          <li><a href="#step-3"><b>3</b><span>Key</span></a></li>
+          <li><a href="#step-4" data-optional><b>4</b><span>Graphify</span></a></li>
+          <li><a href="#step-5"><b>5</b><span>Start</span></a></li>
+          <li><a href="#step-6"><b>6</b><span>Screen</span></a></li>
+          <li><a href="#step-7" data-optional><b>7</b><span>Chrome</span></a></li>
+          <li><a href="#step-8" data-optional><b>8</b><span>fn key</span></a></li>
+        </ol>
+        <p id="railStatus" role="status"></p>
+      </nav>
+
     <div class="steps">
 
       <!-- 1 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>1</b></div>
+      <details class="istep rv" id="step-1" open>
+        <summary>
+          <b class="num">1</b>
           <h3>Install the developer tools</h3>
-          <p>If you already have Homebrew, Node 22 or newer and pnpm, skip ahead. Otherwise, open <b>Terminal</b> and run:</p>
+          <span class="gist">Xcode tools, Homebrew, Node, pnpm and Git. Skip this if you have them.</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
+          <p>If you already have Homebrew, Node 22 or newer and pnpm, skip ahead. Otherwise, open <b>Terminal</b> and run these one at a time, letting each finish:</p>
           <div class="term">
-            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy='xcode-select --install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install node pnpm git'>Copy</button></div>
-<pre><span class="c"># Apple's compilers (a dialog appears; click Install)</span>
-<span class="p">$ </span>xcode-select --install
-<span class="c"># Homebrew, the Mac package manager</span>
-<span class="p">$ </span>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-<span class="c"># Node, pnpm and Git</span>
-<span class="p">$ </span>brew install node pnpm git</pre>
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span></div>
+            <div class="cmds">
+              <div><span class="c"># Apple's compilers (a dialog appears; click Install)</span>
+                <div class="cmd"><code><span class="p">$ </span>xcode-select --install</code><button class="copy" type="button" data-copy="xcode-select --install">Copy</button></div></div>
+              <div><span class="c"># Homebrew, the Mac package manager</span>
+                <div class="cmd"><code><span class="p">$ </span>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><button class="copy" type="button" data-copy='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'>Copy</button></div></div>
+              <div><span class="c"># Put brew on your PATH (Homebrew prints these as its "Next steps")</span>
+                <div class="cmd"><code><span class="p">$ </span>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' &gt;&gt; ~/.zprofile
+<span class="p">$ </span>eval "$(/opt/homebrew/bin/brew shellenv)"</code><button class="copy" type="button" data-copy="echo 'eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;' &gt;&gt; ~/.zprofile
+eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;">Copy</button></div></div>
+              <div><span class="c"># Node, pnpm and Git</span>
+                <div class="cmd"><code><span class="p">$ </span>brew install node pnpm git</code><button class="copy" type="button" data-copy="brew install node pnpm git">Copy</button></div></div>
+            </div>
           </div>
+          <p class="note warn"><code>command not found: brew</code>? The two PATH lines haven't run in this window yet. Run them and try again.</p>
         </div>
         <div class="term" aria-label="Checking versions">
           <div class="term-bar"><i></i><i></i><i></i><span>Check it worked</span><button class="copy" type="button" data-copy="node -v && pnpm -v && git --version">Copy</button></div>
@@ -340,13 +383,22 @@ brew install node pnpm git'>Copy</button></div>
 <span class="p">$ </span>git --version
 <span class="ok">git version 2.50.1</span></pre>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck on this step? <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">Ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 2 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>2</b></div>
+      <details class="istep rv" id="step-2">
+        <summary>
+          <b class="num">2</b>
           <h3>Get the code</h3>
+          <span class="gist">Clone the repository and install its packages.</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>Clone the repository and install its packages. <code>pnpm install</code> also fetches Electron, which takes a minute or two the first time.</p>
           <div class="term">
             <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="git clone https://github.com/evandong1976/Klair.git
@@ -367,21 +419,35 @@ pnpm install">Copy</button></div>
             <li><span class="st" style="background:#E9B44C"></span><span><b>.env.example</b><small>Template for your keys (step 3)</small></span></li>
           </ul>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck on this step? <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">Ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 3 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>3</b></div>
+      <details class="istep rv" id="step-3">
+        <summary>
+          <b class="num">3</b>
           <h3>Add your OpenRouter key</h3>
+          <span class="gist">Create a key and paste it into your settings file.</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>Klair reaches its AI models through <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a>. Create a key there and add a few dollars of credit. Then copy the settings template and paste your key into it:</p>
           <div class="term">
-            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="cp .env.example .env.local
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="cp -n .env.example .env.local
 open -e .env.local">Copy</button></div>
-<pre><span class="p">$ </span>cp .env.example .env.local
+<pre><span class="c"># -n keeps a key you already saved</span>
+<span class="p">$ </span>cp -n .env.example .env.local
 <span class="p">$ </span>open -e .env.local      <span class="c"># opens it in TextEdit</span></pre>
           </div>
-          <p class="note"><b>Optional: TigerData.</b> Leave <code>DATABASE_URL</code> empty and projects stay on your Mac. To keep a cloud copy, fork a TigerData service with <code>tiger service fork &lt;id&gt; --now</code>, run <code>tiger db uri &lt;fork-id&gt; --with-password</code>, and paste the result with <code>&amp;uselibpqcompat=true</code> on the end.</p>
+          <p class="note">Your key stays in <code>.env.local</code> on your Mac, and Git ignores that file. In OpenRouter's key dialog, set a <b>credit limit</b> so Klair can't spend past it.</p>
+          <details class="note">
+            <summary><b>Optional: keep a cloud copy with TigerData</b></summary>
+            <p>Leave <code>DATABASE_URL</code> empty and projects stay on your Mac. To keep a cloud copy, fork a TigerData service with <code>tiger service fork &lt;id&gt; --now</code>, run <code>tiger db uri &lt;fork-id&gt; --with-password</code>, and paste the result with <code>&amp;uselibpqcompat=true</code> on the end.</p>
+          </details>
         </div>
         <div>
 <div class="env" aria-label=".env.local"><span class="c"># .env.local (never committed)</span>
@@ -400,13 +466,23 @@ open -e .env.local">Copy</button></div>
 <span class="k">KLAIR_DWELL_MS</span>=<span class="v">60000</span></div>
           <p class="note" style="margin-top:12px">The defaults were picked for speed. Any OpenRouter model that accepts images works, and the Start window checks your key and models when Klair launches.</p>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck on this step? <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">Ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 4 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>4</b><span class="opt">Recommended</span></div>
+      <details class="istep rv" id="step-4" data-optional>
+        <summary>
+          <b class="num">4</b>
           <h3>Install Graphify for knowledge graphs</h3>
+          <span class="gist">So answers can draw on what you studied earlier.</span>
+          <span class="opt">Recommended</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>Graphify builds a graph of each project's concepts, so answers can pull in what you studied earlier without sending your whole history. Klair finds it automatically.</p>
           <div class="term">
             <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy='brew install pipx
@@ -436,13 +512,22 @@ pipx install "graphifyy[openai]"'>Copy</button></div>
             </g>
           </svg>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck? See <a href="#fix-graph">The knowledge graph stays empty</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 5 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>5</b></div>
+      <details class="istep rv" id="step-5">
+        <summary>
+          <b class="num">5</b>
           <h3>Start Klair</h3>
+          <span class="gist">Build the app and open the Start window.</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>There are two ways to run it:</p>
           <ul>
             <li><b><code>pnpm app</code></b> builds a signed <b>Klair.app</b>, copies your <code>.env.local</code> next to it and opens it. This is the one to use day to day, because macOS remembers its permissions.</li>
@@ -466,14 +551,25 @@ pipx install "graphifyy[openai]"'>Copy</button></div>
           </ul>
           <div class="foot"><span class="btn">Not now <kbd>esc</kbd></span><span class="btn dark">Start session <kbd>⌘↵</kbd></span></div>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck? See <a href="#fix-env">Klair.app shows the AI models in red</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 6 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>6</b></div>
+      <details class="istep rv" id="step-6">
+        <summary>
+          <b class="num">6</b>
           <h3>Allow screen recording</h3>
-          <p>Klair needs to see your screen during a session. In the Start window:</p>
+          <span class="gist">Klair needs to see your screen during a session.</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
+          <p>Klair needs to see your screen during a session.</p>
+          <p class="note">It only captures while a session is running, and <kbd>⌃⌥P</kbd> pauses it. Screenshots are kept on your Mac and deleted after 14 days by default. Each new screen also goes to your AI model through OpenRouter, which writes its note.</p>
+          <p>In the Start window:</p>
           <ol>
             <li>Click <b>Allow</b> on the <b>Screen recording</b> row.</li>
             <li>In System Settings › Privacy &amp; Security › <b>Screen &amp; System Audio Recording</b>, switch Klair on.</li>
@@ -491,15 +587,25 @@ pipx install "graphifyy[openai]"'>Copy</button></div>
             <div class="toggle-row"><span class="app"><canvas class="pixelated" data-flower="14"></canvas></span>Klair<span class="switch"></span></div>
             <div class="toggle-row"><span class="app" style="background:#2D3128;border-color:#2D3128"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 4 L6 7 L3 10" stroke="#fff" stroke-width="1.6" fill="none"/><rect x="7" y="9.5" width="4" height="1.5" fill="#fff"/></svg></span>Terminal<small style="color:var(--muted);font-weight:500">for pnpm dev</small><span class="switch off"></span></div>
           </div>
-          <p class="note" style="margin-top:14px;font-size:13.5px!important">Klair's own windows are excluded from capture, so it never sees itself.</p>
+          <p class="note" style="margin-top:14px;font-size:14px!important">Klair's own windows are excluded from capture, so it never sees itself.</p>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck? See <a href="#fix-screen">Screen recording says “not allowed”</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 7 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>7</b><span class="opt">Optional</span></div>
+      <details class="istep rv" id="step-7" data-optional>
+        <summary>
+          <b class="num">7</b>
           <h3>Add the Chrome extension</h3>
+          <span class="gist">So Klair can read whole pages and highlight passages.</span>
+          <span class="opt">Optional</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>So Klair can read whole web pages and highlight the passages an answer is about:</p>
           <ol>
             <li>Open <code>chrome://extensions</code> in Chrome.</li>
@@ -518,14 +624,25 @@ pipx install "graphifyy[openai]"'>Copy</button></div>
             <span class="switch" style="width:32px;height:18px"></span>
           </div>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck? See <a href="#fix-chrome">The extension says “Klair isn't running”</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">ask on GitHub</a>.</p>
+        </div>
+      </details>
 
       <!-- 8 -->
-      <div class="istep rv">
-        <div class="txt">
-          <div class="num"><b>8</b><span class="opt">Optional</span></div>
+      <details class="istep rv" id="step-8" data-optional>
+        <summary>
+          <b class="num">8</b>
           <h3>Use the fn key</h3>
+          <span class="gist">Open Klair with plain fn instead of ⌃⌥K.</span>
+          <span class="opt">Optional</span>
+        </summary>
+        <div class="body">
+        <div class="txt">
           <p>Out of the box, Klair opens with <kbd>⌃⌥K</kbd>. To use plain <kbd>fn</kbd> instead, build the small native add-on, then allow <b>Input Monitoring</b> from the Start window's fn row and click <b>Check again</b>.</p>
+          <p class="note">The add-on is listen-only. It reports <kbd>fn</kbd> by itself, and <kbd>fn</kbd> held with <kbd>P</kbd>, <kbd>Q</kbd> or <kbd>1–9</kbd>. Everything else you type is ignored, and it never blocks or changes a key.</p>
           <div class="term">
             <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="pnpm build:native
 pnpm app">Copy</button></div>
@@ -540,12 +657,18 @@ pnpm app">Copy</button></div>
             <span style="color:var(--muted);font-weight:600">or</span>
             <span style="display:flex;gap:6px"><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">⌃</kbd><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">⌥</kbd><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">K</kbd></span>
           </div>
-          <p style="font-size:14.5px;color:var(--ink-2);text-align:center;max-width:320px">The whole fn family has the same fallback: <kbd>⌃⌥P</kbd> pause, <kbd>⌃⌥Q</kbd> quiet, <kbd>⌃⌥H</kbd> hide, <kbd>⌃⌥1–9</kbd> switch project.</p>
+          <p style="font-size:15px;color:var(--ink-2);text-align:center;max-width:320px">The whole fn family has the same fallback: <kbd>⌃⌥P</kbd> pause, <kbd>⌃⌥Q</kbd> quiet, <kbd>⌃⌥H</kbd> hide, <kbd>⌃⌥1–9</kbd> switch project.</p>
         </div>
-      </div>
+        </div>
+        <div class="step-foot">
+          <button class="btn dark done-btn" type="button">Done, next step</button>
+          <p class="stuck">Stuck on this step? <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">Ask on GitHub</a>.</p>
+        </div>
+      </details>
+    </div>
     </div>
 
-    <div class="walk rv">
+    <div class="walk rv" id="first-session">
       <div>
         <span class="label" style="color:#B9C893">Your first session</span>
         <h3 style="margin-top:10px">Two minutes to your first answer.</h3>
@@ -652,7 +775,7 @@ pnpm app">Copy</button></div>
         </ul>
       </div>
     </div>
-    <p class="rv" style="margin-top:24px;font-size:15.5px;color:var(--ink-2);text-align:center">Pause anytime with <kbd>fn P</kbd>. Downloads are never read until you click <b>Add</b>, and the Chrome extension sends nothing from incognito windows.</p>
+    <p class="rv" style="margin-top:24px;font-size:16px;color:var(--ink-2);text-align:center">Pause anytime with <kbd>fn P</kbd>. Downloads are never read until you click <b>Add</b>, and the Chrome extension sends nothing from incognito windows.</p>
   </div>
 </section>
 
@@ -664,7 +787,7 @@ pnpm app">Copy</button></div>
       <h2>If something's off</h2>
     </div>
     <div class="faq rv">
-      <details>
+      <details id="fix-screen">
         <summary>Screen recording says "not allowed" after I allowed it</summary>
         <div class="a"><p>macOS applies the permission only after the app restarts. Quit Klair from the menu bar and open it again. With <code>pnpm dev</code>, the permission belongs to the app you ran it from (the Start window names it). Allow that app, quit it with <kbd>⌘Q</kbd>, and run <code>pnpm dev</code> again.</p></div>
       </details>
@@ -676,11 +799,11 @@ pnpm app">Copy</button></div>
         <summary>The ⌘ shortcuts do nothing</summary>
         <div class="a"><p>They only work while the panel is open and focused. Click the panel once if another app took focus.</p></div>
       </details>
-      <details>
+      <details id="fix-env">
         <summary>Klair.app shows the AI models or TigerData in red, but pnpm dev works</summary>
         <div class="a"><p>The app reads its settings from <code>~/Library/Application Support/Klair</code>. Run <code>pnpm app</code> again to copy your <code>.env.local</code> there.</p></div>
       </details>
-      <details>
+      <details id="fix-graph">
         <summary>The knowledge graph stays empty</summary>
         <div class="a"><p>Graphify needs its OpenAI backend to reach OpenRouter. Run <code>pipx inject graphifyy openai</code>, click <b>Check again</b>, then <b>Rebuild graph</b> in the Knowledge graph pane.</p></div>
       </details>
@@ -688,12 +811,12 @@ pnpm app">Copy</button></div>
         <summary>TigerData: "Connection terminated due to connection timeout"</summary>
         <div class="a"><p>Usually the network. Some campus and office Wi-Fi block the port. Sessions keep saving on your Mac and upload later, so try a hotspot or VPN, then <b>Check again</b>.</p></div>
       </details>
-      <details>
+      <details id="fix-chrome">
         <summary>The Chrome extension says "Klair isn't running"</summary>
         <div class="a"><p>Make sure Klair is open and a session is observing. Reload the extension (↻ in <code>chrome://extensions</code>) after pulling new code, and reload tabs that were open before you installed it.</p></div>
       </details>
     </div>
-    <p class="rv" style="text-align:center;margin-top:28px;font-size:15.5px;color:var(--ink-2)">More in the <a href="https://github.com/evandong1976/Klair#troubleshooting" target="_blank" rel="noopener">README</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">open an issue</a>.</p>
+    <p class="rv" style="text-align:center;margin-top:28px;font-size:16px;color:var(--ink-2)">More in the <a href="https://github.com/evandong1976/Klair#troubleshooting" target="_blank" rel="noopener">README</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">open an issue</a>.</p>
   </div>
 </section>
 

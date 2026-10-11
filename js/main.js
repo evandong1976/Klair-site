@@ -169,6 +169,80 @@ const io = new IntersectionObserver(
 );
 $$('.rv').forEach((el) => io.observe(el));
 
+/* ---------- Install guide: remembers finished steps and opens the next one ---------- */
+
+const steps = $$('.istep');
+const needed = steps.filter((s) => !('optional' in s.dataset));
+const railLinks = $$('.rail li a');
+const railFlower = $('#railFlower');
+const railStatus = $('#railStatus');
+const DONE_KEY = 'klair-install-done';
+let done = new Set();
+try {
+  done = new Set(JSON.parse(localStorage.getItem(DONE_KEY)));
+} catch {}
+let railRes = 0;
+
+// Paints the steps, rail and flower from `done`; returns the first needed step still to do.
+function renderGuide() {
+  const current = needed.find((s) => !done.has(s.id));
+  steps.forEach((s, i) => {
+    const isDone = done.has(s.id);
+    const link = railLinks[i];
+    const btn = $('.done-btn', s);
+    s.classList.toggle('done', isDone);
+    link.classList.toggle('done', isDone);
+    link.setAttribute('aria-label', `Step ${i + 1}, ${$('span', link).textContent}${isDone ? ', done' : ''}`);
+    if (s === current) link.setAttribute('aria-current', 'step');
+    else link.removeAttribute('aria-current');
+    btn.textContent = isDone ? 'Mark as not done' : 'Done, next step';
+    btn.classList.toggle('dark', !isDone);
+  });
+  const n = needed.filter((s) => done.has(s.id)).length;
+  railStatus.innerHTML = current
+    ? `${n} of ${needed.length} needed steps done`
+    : 'All set. <a href="#first-session">Start your first session</a>';
+  // The flower resolves as steps get done, the way it does in Klair when it has something for you.
+  const to = 11 + Math.round((19 * n) / needed.length);
+  if (to !== railRes) railRes ? bloom(railFlower, railRes, to) : paint(railFlower, to);
+  railRes = to;
+  return current;
+}
+
+steps.forEach((s) =>
+  $('.done-btn', s).addEventListener('click', () => {
+    done.has(s.id) ? done.delete(s.id) : done.add(s.id);
+    try {
+      localStorage.setItem(DONE_KEY, JSON.stringify([...done]));
+    } catch {}
+    const next = renderGuide();
+    if (!done.has(s.id)) return;
+    s.open = false;
+    if (next) {
+      next.open = true;
+      $('summary', next).focus({ preventScroll: true });
+    }
+    (next || $('#first-session')).scrollIntoView();
+  }),
+);
+
+const firstTodo = renderGuide();
+steps.forEach((s) => (s.open = s === firstTodo));
+
+// In-page links open the <details> they point into (install steps, troubleshooting).
+function openTarget(hash) {
+  let el = hash.length > 1 && document.getElementById(hash.slice(1));
+  for (el = el && el.closest('details'); el; el = el.parentElement?.closest('details')) el.open = true;
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest?.('a[href^="#"]');
+  if (a) openTarget(a.hash);
+});
+if (location.hash.length > 1) {
+  openTarget(location.hash);
+  document.getElementById(location.hash.slice(1))?.scrollIntoView();
+}
+
 /* ---------- CTA flower: blooms on hover/click ---------- */
 
 const cta = $('#ctaFlower');
