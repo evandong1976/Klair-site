@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klair: help that stays on your screen</title>
+<meta name="description" content="Klair is a background macOS study assistant. A pixel flower watches what you read, takes notes, and answers in place when you tap fn. Open source; runs on your Mac.">
+<meta name="theme-color" content="#FBF7F5">
+<meta property="og:title" content="Klair: help that stays on your screen">
+<meta property="og:description" content="A background macOS assistant that takes notes on what you study and answers in place when you tap fn.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://klair.tech/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Reforma1918-Negra.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Reforma1918-Blanca.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="gh" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol></svg>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Klair home"><canvas class="pixelated" data-flower="16"></canvas>Klair</a>
+    <div class="nav-links">
+      <a href="#features">What it does</a>
+      <a href="#how">How it works</a>
+      <a href="#install">Install</a>
+      <a href="#keys">Keys</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+    <a class="btn dark" href="https://github.com/evandong1976/Klair" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#gh"/></svg>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- Hero -->
+<header class="hero">
+  <canvas class="hero-bg a pixelated" data-flower="14" aria-hidden="true"></canvas>
+  <canvas class="hero-bg b pixelated" data-flower="12" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>For macOS · open source · runs on your Mac</span>
+      <h1>Help that stays <em>on your screen.</em></h1>
+      <p class="lede">Klair is a quiet study companion. A small pixel flower sits in the corner of your screen, takes notes on what you read, and when you tap <kbd>fn</kbd>, answers right where you are, grounded in everything you've studied in that project.</p>
+      <div class="ctas">
+        <a class="btn dark" href="#install">Set it up on your Mac <kbd>↓</kbd></a>
+        <a class="btn" href="https://github.com/evandong1976/Klair" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#gh"/></svg>
+          View the source
+        </a>
+      </div>
+      <p class="fine">Free and open source · Bring your own OpenRouter key · Nothing runs until you ask</p>
+    </div>
+
+    <!-- Interactive demo -->
+    <div class="demo">
+      <div class="demo-frame" id="frame" aria-label="Interactive demo of Klair over a browser window">
+        <div class="stage" id="stage">
+          <div class="menubar">
+            <span class="apple" aria-hidden="true"></span><b>Chrome</b><span>File</span><span>Edit</span><span>View</span><span>History</span>
+            <span class="right"><canvas class="tray pixelated" data-flower="11" aria-hidden="true"></canvas><span>Sat 2:14 PM</span></span>
+          </div>
+
+          <div class="browser">
+            <div class="chrome">
+              <div class="lights"><i></i><i></i><i></i></div>
+              <div class="url">encyclopedia.example/gradient-descent#learning-rate</div>
+            </div>
+            <div class="article">
+              <div class="toc">
+                <b>Contents</b>
+                <span>Overview</span>
+                <span>Intuition</span>
+                <span class="on">Learning rate</span>
+                <span>Convergence</span>
+                <span>Momentum</span>
+                <span>Stochastic variants</span>
+              </div>
+              <div class="article-body">
+                <h3>Gradient descent</h3>
+                <div class="crumb">From the free encyclopedia · Optimization</div>
+                <h4 id="lr">Learning rate</h4>
+                <p>Each step moves the parameters against the gradient, scaled by a step size <i>η</i> called the learning rate: <i>x</i> ← <i>x</i> − <i>η</i>∇<i>f</i>(<i>x</i>). <span class="mark" data-mark="1"><span class="badge">1</span><span class="tip">The whole method in one line: the gradient picks the direction, η picks how far to go.</span>Choosing η is a trade-off between speed and stability.</span></p>
+                <p><span class="mark" data-mark="2"><span class="badge">2</span><span class="tip">This is why the η = 1.1 example bounces: on f(x) = x², any η above 1 makes each step overshoot further.</span>If the rate is too large, each update overshoots the minimum and the iterates can oscillate or diverge.</span> If it is too small, progress is slow and training may stall on flat regions.</p>
+                <div class="fig">
+                  <svg width="132" height="70" viewBox="0 0 132 70" aria-hidden="true" shape-rendering="crispEdges">
+                    <path d="M6 8 Q66 120 126 8" fill="none" stroke="#C9D1B6" stroke-width="2"/>
+                    <rect x="14" y="20" width="5" height="5" fill="#EE8378"/><rect x="104" y="12" width="5" height="5" fill="#EE8378"/><rect x="24" y="34" width="5" height="5" fill="#EE8378"/><rect x="92" y="38" width="5" height="5" fill="#EE8378"/><rect x="40" y="50" width="5" height="5" fill="#EE8378"/><rect x="63" y="60" width="5" height="5" fill="#46522F"/>
+                  </svg>
+                  <span>Figure 2. With a large step size, iterates jump from one side of the valley to the other before settling.</span>
+                </div>
+                <p>In practice the rate is often decayed over time, or adapted per parameter, as in AdaGrad and Adam.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Klair: corner flower + nudge pill -->
+          <div class="corner" id="corner">
+            <button class="pill" id="pill" type="button">4 ideas for this section <kbd>fn</kbd></button>
+            <button class="corner-flower bob" id="cornerFlower" type="button" aria-label="Open Klair"><canvas class="pixelated" id="cornerCanvas"></canvas></button>
+          </div>
+
+          <!-- Klair: glass panel -->
+          <section class="panel" id="panel" aria-label="Klair panel">
+            <canvas class="panel-flower pixelated" id="panelFlower" aria-hidden="true"></canvas>
+            <div id="panelIdeas">
+              <div class="where" style="display:flex;flex-direction:column;gap:6px">
+                <span class="label" style="font-size:11px">Where you are</span>
+                <h5>Gradient descent: Learning rate</h5>
+                <p>You've stayed on the step-size section for a few minutes. Earlier in this project you read the Machine learning overview.</p>
+                <div class="chips"><span class="chip">On screen · 2:14 PM</span><span class="chip">Full page · Gradient descent</span></div>
+              </div>
+              <div class="ideas" style="margin-top:14px">
+                <button class="idea" data-pick="0" type="button"><kbd>⌘1</kbd><span><b>Summarize this page</b><small>Every section, not just the part on screen</small></span></button>
+                <button class="idea" data-pick="1" type="button"><kbd>⌘2</kbd><span><b>Work through an example</b><small>Two step sizes on f(x) = x², step by step</small></span></button>
+                <button class="idea" data-pick="2" type="button"><kbd>⌘3</kbd><span><b>Quiz me on step size</b><small>Three questions, answers at the end</small></span></button>
+                <span class="label sub">Building on this project</span>
+                <button class="idea" data-pick="3" type="button"><kbd>⌘4</kbd><span><b>Connect it to loss functions</b><small>From the ML overview you read earlier</small></span></button>
+              </div>
+              <div class="ask" style="margin-top:14px"><div>Ask for something else…</div><kbd>⌘K</kbd></div>
+              <div class="hints" style="margin-top:12px"><span><kbd>⌘1–9</kbd>pick</span><span><kbd>⌘S</kbd>select area</span><span><kbd>⌘/</kbd>all keys</span><span><kbd>esc</kbd>close</span></div>
+            </div>
+            <div class="answer" id="panelAnswer" hidden>
+              <button class="back" id="back" type="button"><kbd>⌘[</kbd> Back to ideas</button>
+              <span class="tag">Klair's answer</span>
+              <h5 id="answerTitle"></h5>
+              <div class="body" id="answerBody"></div>
+              <div class="chips" id="answerChips"></div>
+              <div class="marked" id="marked"><i></i><span>Marked 2 passages on the page. Hover a number to read why.</span></div>
+              <div class="reshape"><span><kbd>⌘⇧1</kbd>Shorter</span><span><kbd>⌘⇧2</kbd>Simpler</span><span><kbd>⌘⇧3</kbd>More detail</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <p class="demo-hint" id="demoHint">Try it: click the flower or press <kbd>K</kbd> (that's <kbd>fn</kbd> in the app), then <kbd>1</kbd>–<kbd>4</kbd> to pick and <kbd>esc</kbd> to close.</p>
+      <div class="demo-steps" aria-hidden="true"><span id="ds0" class="on"></span><span id="ds1"></span><span id="ds2"></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- Features -->
+<section class="block tint" id="features">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label">What it does</span>
+      <h2>A study partner that reads along, then waits to be asked.</h2>
+      <p>Klair runs in the background during a session. It notices what you're working on, keeps it organised by project, and stays out of the way until you want help.</p>
+    </div>
+    <div class="features">
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="eye" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Notices what you're reading</h3>
+        <p>Every few seconds Klair checks the screen. Only real changes count. A chat that keeps scrolling or a small animation doesn't, and each new screen gets a short factual note.</p>
+        <div class="k">Pause anytime <kbd>fn P</kbd></div>
+      </article>
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="ideas" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Suggests what to do next</h3>
+        <p>Stay on a page for a minute and ideas appear beside the flower: a summary, a worked example, a self-test, or how it connects to something you studied last week.</p>
+        <div class="k">Quiet for 30 min <kbd>fn Q</kbd></div>
+      </article>
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="answer" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Answers in place</h3>
+        <p>Pick an idea or ask your own question. The answer streams into a glass panel over the corner, says what it was built from, and can be reshaped: shorter, simpler, more detail.</p>
+        <div class="k"><kbd>fn</kbd> open · <kbd>⌘1–9</kbd> pick · <kbd>⌘K</kbd> ask</div>
+      </article>
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="select" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Focus on one part of the screen</h3>
+        <p>Drag out a figure, an equation or a block of code. Klair captures it at full resolution and keeps it as the context until you switch back to the whole screen.</p>
+        <div class="k">Select an area <kbd>⌘S</kbd></div>
+      </article>
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="page" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Reads whole pages and marks them up</h3>
+        <p>With the Chrome extension, Klair gets the full text of the page, not just what's visible. After an answer, it highlights the passages it relied on, with a note beside each.</p>
+        <div class="k">Optional Chrome extension</div>
+      </article>
+      <article class="feature rv">
+        <div class="ico"><svg data-icon="download" viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"></svg></div>
+        <h3>Adds the files you download</h3>
+        <p>Grab a PDF, slides or a spreadsheet and Klair asks whether to add it. It reads the text into your project, so you can ask "summarize the paper I just downloaded".</p>
+        <div class="k">Asks first, every time</div>
+      </article>
+    </div>
+
+    <div class="projects rv">
+      <div>
+        <span class="label">Projects and sessions</span>
+        <h3 style="margin-top:10px">Each subject keeps its own memory.</h3>
+        <p>A <b>project</b> ("ML", "Operating Systems", "Spanish") holds everything Klair gathers for it, across every session, along with its own knowledge graph of the concepts you've covered. A <b>session</b> is just the time you spend. Switch projects mid-session with <kbd>fn 1–9</kbd>. Context never crosses projects, so your OS notes never leak into an ML answer.</p>
+      </div>
+      <div class="slots" aria-hidden="true">
+        <div class="slot on"><kbd>fn 1</kbd>ML<small>Active · 42 notes</small></div>
+        <div class="slot"><kbd>fn 2</kbd>Operating Systems<small>18 notes · Midterm in 3 days</small></div>
+        <div class="slot"><kbd>fn 3</kbd>Spanish<small>7 notes</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label">How it works</span>
+      <h2>Watch, note, wait, answer.</h2>
+      <p>Klair does as little as possible until you ask. It sends only a small, relevant slice of your project to the model, never the whole history.</p>
+    </div>
+    <div class="flow">
+      <div class="step rv">
+        <div class="n"><b>1</b><i></i></div>
+        <h3>See what changed</h3>
+        <p>The screen is checked every 4 seconds. A screenshot is kept only if at least 5% of it changed and a small judge model agrees it's new content.</p>
+        <div class="meta">Klair's own windows are never captured</div>
+      </div>
+      <div class="step rv">
+        <div class="n"><b>2</b><i></i></div>
+        <h3>Take a note</h3>
+        <p>A vision model writes a short note of observed facts and proposes study moves. Screens unrelated to the project, like a glance at messages, are left out.</p>
+        <div class="meta">Gemini 3.5 Flash-Lite by default</div>
+      </div>
+      <div class="step rv">
+        <div class="n"><b>3</b><i></i></div>
+        <h3>Wait for you</h3>
+        <p>Ideas show up only after you've paused on a screen. While the panel is open, ideas stay put, so nothing shifts while you read.</p>
+        <div class="meta">Pause time: 1 min (30 s / 2 min in the menu bar)</div>
+      </div>
+      <div class="step rv">
+        <div class="n"><b>4</b><i></i></div>
+        <h3>Answer from your project</h3>
+        <p>When you pick, Klair pulls related notes from the project's knowledge graph and a keyword search, then streams a grounded answer into the panel.</p>
+        <div class="meta">GPT-5.4 mini by default</div>
+      </div>
+    </div>
+
+    <div class="diagram rv" aria-label="Diagram of Klair's pipeline">
+      <svg viewBox="0 0 1000 330" role="img" aria-labelledby="dgt">
+        <title id="dgt">Screens, Chrome pages, selected areas and added files go into the active project. When you pick an idea, Klair retrieves from that project only and streams an answer.</title>
+        <defs>
+          <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#B7AFA9"/></marker>
+        </defs>
+        <style>
+          .bx{fill:#fff;stroke:#EADCD9;stroke-width:1.2}
+          .bx2{fill:#FFF7F6;stroke:#EFCFCB;stroke-width:1.2}
+          .bx3{fill:#F4F6EE;stroke:#C9D1B6;stroke-width:1.2}
+          .t{font:700 15px 'Reforma 1918',-apple-system,serif;fill:#2D3128}
+          .s{font:500 12.5px 'Reforma 1918',-apple-system,serif;fill:#686D60}
+          .ln{stroke:#B7AFA9;stroke-width:1.6;fill:none}
+        </style>
+        <!-- inputs -->
+        <rect class="bx" x="10" y="14" width="200" height="56" rx="14"/><text class="t" x="26" y="38">Your screen</text><text class="s" x="26" y="57">checked every 4 s</text>
+        <rect class="bx" x="10" y="84" width="200" height="56" rx="14"/><text class="t" x="26" y="108">Chrome page</text><text class="s" x="26" y="127">full text, via the extension</text>
+        <rect class="bx" x="10" y="154" width="200" height="56" rx="14"/><text class="t" x="26" y="178">Selected area ⌘S</text><text class="s" x="26" y="197">full resolution, pinned</text>
+        <rect class="bx" x="10" y="224" width="200" height="56" rx="14"/><text class="t" x="26" y="248">Downloaded file</text><text class="s" x="26" y="267">added only if you say so</text>
+
+        <rect class="bx" x="270" y="14" width="190" height="56" rx="14"/><text class="t" x="286" y="38">Changed enough?</text><text class="s" x="286" y="57">pixel check + judge</text>
+        <path class="ln" d="M210 42 H266" marker-end="url(#ah)"/>
+
+        <rect class="bx2" x="270" y="118" width="190" height="104" rx="14"/><text class="t" x="286" y="146">Note + ideas</text><text class="s" x="286" y="166">facts about what's shown,</text><text class="s" x="286" y="184">then study moves, each with</text><text class="s" x="286" y="202">its full instruction</text>
+        <path class="ln" d="M365 70 V114" marker-end="url(#ah)"/>
+        <path class="ln" d="M210 112 H240 V150 H266" marker-end="url(#ah)"/>
+        <path class="ln" d="M210 182 H266" marker-end="url(#ah)"/>
+        <path class="ln" d="M210 252 H240 V200 H266" marker-end="url(#ah)"/>
+
+        <!-- project -->
+        <rect class="bx3" x="520" y="14" width="210" height="266" rx="18"/>
+        <text class="t" x="538" y="44">Active project</text>
+        <text class="s" x="538" y="64">only this one, never others</text>
+        <rect x="538" y="80" width="174" height="36" rx="10" fill="#fff" stroke="#E3E8D6"/><text class="s" x="552" y="103">Notes, pages, files</text>
+        <rect x="538" y="124" width="174" height="36" rx="10" fill="#fff" stroke="#E3E8D6"/><text class="s" x="552" y="147">SQLite + keyword search</text>
+        <rect x="538" y="168" width="174" height="60" rx="10" fill="#fff" stroke="#E3E8D6"/><text class="s" x="552" y="190">Knowledge graph</text>
+        <g fill="#9CAA77" shape-rendering="crispEdges"><rect x="560" y="203" width="6" height="6"/><rect x="590" y="212" width="6" height="6" fill="#EE8378"/><rect x="618" y="200" width="6" height="6"/><rect x="646" y="214" width="6" height="6"/><rect x="676" y="204" width="6" height="6" fill="#EE8378"/></g>
+        <path d="M563 206 L593 215 L621 203 L649 217 L679 207" stroke="#C9D1B6" stroke-width="1.4" fill="none"/>
+        <text class="s" x="538" y="262">uploaded after each session</text>
+        <path class="ln" d="M460 170 H516" marker-end="url(#ah)"/>
+
+        <!-- answer path -->
+        <rect class="bx" x="790" y="14" width="200" height="56" rx="14"/><text class="t" x="806" y="38">You pick or ask</text><text class="s" x="806" y="57">⌘1–9 · ⌘K</text>
+        <rect class="bx" x="790" y="118" width="200" height="56" rx="14"/><text class="t" x="806" y="142">Retrieve a little</text><text class="s" x="806" y="161">graph + search, in budget</text>
+        <rect class="bx2" x="790" y="224" width="200" height="56" rx="14"/><text class="t" x="806" y="248">Answer, in place</text><text class="s" x="806" y="267">streamed, with sources</text>
+        <path class="ln" d="M890 70 V114" marker-end="url(#ah)"/>
+        <path class="ln" d="M730 146 H786" marker-end="url(#ah)"/>
+        <path class="ln" d="M890 174 V220" marker-end="url(#ah)"/>
+        <path class="ln" d="M790 266 H760 V300 H120 V284" marker-end="url(#ah)" stroke-dasharray="4 4"/>
+        <text class="s" x="400" y="320">answers are saved to the project and marked on the Chrome page</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Install -->
+<section class="block tint" id="install">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label">Install</span>
+      <h2>Get Klair running on your Mac.</h2>
+      <p>Klair is built from source for now. Plan on about 15 minutes. You'll need a Terminal and an OpenRouter API key, and everything else is optional.</p>
+    </div>
+
+    <div class="reqs rv">
+      <div class="req"><span class="opt need">Needed</span><b>A Mac</b><span>macOS with Apple silicon. <code>pnpm app</code> builds an arm64 app.</span></div>
+      <div class="req"><span class="opt need">Needed</span><b>Node 22+ and pnpm</b><span>Plus Git and the Xcode Command Line Tools.</span></div>
+      <div class="req"><span class="opt need">Needed</span><b>OpenRouter key</b><span>Pays for the AI models. Usage is usually cents per session.</span></div>
+      <div class="req"><span class="opt nice">Optional</span><b>Graphify, Chrome, TigerData</b><span>Knowledge graphs, whole pages, and a cloud copy of each project.</span></div>
+    </div>
+
+    <div class="steps">
+
+      <!-- 1 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>1</b></div>
+          <h3>Install the developer tools</h3>
+          <p>If you already have Homebrew, Node 22 or newer and pnpm, skip ahead. Otherwise, open <b>Terminal</b> and run:</p>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy='xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install node pnpm git'>Copy</button></div>
+<pre><span class="c"># Apple's compilers (a dialog appears; click Install)</span>
+<span class="p">$ </span>xcode-select --install
+<span class="c"># Homebrew, the Mac package manager</span>
+<span class="p">$ </span>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<span class="c"># Node, pnpm and Git</span>
+<span class="p">$ </span>brew install node pnpm git</pre>
+          </div>
+        </div>
+        <div class="term" aria-label="Checking versions">
+          <div class="term-bar"><i></i><i></i><i></i><span>Check it worked</span><button class="copy" type="button" data-copy="node -v && pnpm -v && git --version">Copy</button></div>
+<pre><span class="p">$ </span>node -v
+<span class="ok">v22.16.0</span>      <span class="c"># 22 or newer</span>
+<span class="p">$ </span>pnpm -v
+<span class="ok">10.18.0</span>
+<span class="p">$ </span>git --version
+<span class="ok">git version 2.50.1</span></pre>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>2</b></div>
+          <h3>Get the code</h3>
+          <p>Clone the repository and install its packages. <code>pnpm install</code> also fetches Electron, which takes a minute or two the first time.</p>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="git clone https://github.com/evandong1976/Klair.git
+cd Klair
+pnpm install">Copy</button></div>
+<pre><span class="p">$ </span>git clone https://github.com/evandong1976/Klair.git
+<span class="p">$ </span>cd Klair
+<span class="p">$ </span>pnpm install</pre>
+          </div>
+        </div>
+        <div class="mock" aria-label="What's in the repository">
+          <div class="sys-head">Klair/</div>
+          <ul class="rows">
+            <li><span class="st"></span><span><b>src/main</b><small>The app: screen capture, notes, ideas, answers, storage</small></span></li>
+            <li><span class="st"></span><span><b>src/renderer</b><small>The flower, panel, Start and Sessions windows</small></span></li>
+            <li><span class="st" style="background:var(--rose)"></span><span><b>extension/</b><small>Klair for Chrome (step 7)</small></span></li>
+            <li><span class="st" style="background:var(--rose)"></span><span><b>native/fn-key</b><small>Optional add-on for the fn key (step 8)</small></span></li>
+            <li><span class="st" style="background:#E9B44C"></span><span><b>.env.example</b><small>Template for your keys (step 3)</small></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>3</b></div>
+          <h3>Add your OpenRouter key</h3>
+          <p>Klair reaches its AI models through <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a>. Create a key there and add a few dollars of credit. Then copy the settings template and paste your key into it:</p>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="cp .env.example .env.local
+open -e .env.local">Copy</button></div>
+<pre><span class="p">$ </span>cp .env.example .env.local
+<span class="p">$ </span>open -e .env.local      <span class="c"># opens it in TextEdit</span></pre>
+          </div>
+          <p class="note"><b>Optional: TigerData.</b> Leave <code>DATABASE_URL</code> empty and projects stay on your Mac. To keep a cloud copy, fork a TigerData service with <code>tiger service fork &lt;id&gt; --now</code>, run <code>tiger db uri &lt;fork-id&gt; --with-password</code>, and paste the result with <code>&amp;uselibpqcompat=true</code> on the end.</p>
+        </div>
+        <div>
+<div class="env" aria-label=".env.local"><span class="c"># .env.local (never committed)</span>
+
+<span class="c"># https://openrouter.ai/keys</span>
+<span class="k">OPENROUTER_API_KEY</span>=<span class="v">sk-or-v1-…</span>
+
+<span class="c"># Optional: your TigerData fork</span>
+<span class="k">DATABASE_URL</span>=
+
+<span class="c"># Models (must accept images)</span>
+<span class="k">KLAIR_FAST_MODEL</span>=<span class="v">google/gemini-3.5-flash-lite</span>
+<span class="k">KLAIR_ANSWER_MODEL</span>=<span class="v">openai/gpt-5.4-mini</span>
+
+<span class="c"># How long before ideas appear (ms)</span>
+<span class="k">KLAIR_DWELL_MS</span>=<span class="v">60000</span></div>
+          <p class="note" style="margin-top:12px">The defaults were picked for speed. Any OpenRouter model that accepts images works, and the Start window checks your key and models when Klair launches.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>4</b><span class="opt">Recommended</span></div>
+          <h3>Install Graphify for knowledge graphs</h3>
+          <p>Graphify builds a graph of each project's concepts, so answers can pull in what you studied earlier without sending your whole history. Klair finds it automatically.</p>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy='brew install pipx
+pipx ensurepath
+pipx install "graphifyy[openai]"'>Copy</button></div>
+<pre><span class="p">$ </span>brew install pipx
+<span class="p">$ </span>pipx ensurepath          <span class="c"># then open a new Terminal window</span>
+<span class="p">$ </span>pipx install "graphifyy[openai]"</pre>
+          </div>
+          <p class="note warn">Note the double <b>y</b> in <code>graphifyy</code>, and keep <code>[openai]</code>: it's how Graphify reaches OpenRouter. Installed it without? Run <code>pipx inject graphifyy openai</code>. Skipping Graphify is fine too, since answers still use the project's notes and the current screen.</p>
+        </div>
+        <div class="mock glass" aria-label="Knowledge graph pane">
+          <div class="sys-head">Knowledge graph · ML</div>
+          <svg viewBox="0 0 320 210" width="100%" aria-hidden="true" shape-rendering="crispEdges">
+            <g stroke="#C9D1B6" stroke-width="1.5" shape-rendering="geometricPrecision">
+              <line x1="160" y1="100" x2="70" y2="50"/><line x1="160" y1="100" x2="250" y2="44"/><line x1="160" y1="100" x2="92" y2="160"/><line x1="160" y1="100" x2="240" y2="150"/><line x1="70" y1="50" x2="30" y2="110"/><line x1="250" y1="44" x2="296" y2="104"/><line x1="240" y1="150" x2="296" y2="104"/><line x1="92" y1="160" x2="30" y2="110"/><line x1="160" y1="100" x2="160" y2="190"/>
+            </g>
+            <g font-family="Reforma 1918, -apple-system, serif" font-size="11" fill="#3F4538" font-weight="600">
+              <rect x="152" y="92" width="16" height="16" fill="#EE8378"/><text x="174" y="104">Gradient descent</text>
+              <rect x="64" y="44" width="12" height="12" fill="#9CAA77"/><text x="34" y="36">Loss function</text>
+              <rect x="244" y="38" width="12" height="12" fill="#9CAA77"/><text x="214" y="30">Learning rate</text>
+              <rect x="86" y="154" width="12" height="12" fill="#F4A39B"/><text x="40" y="182">Backprop</text>
+              <rect x="234" y="144" width="12" height="12" fill="#9CAA77"/><text x="204" y="172">Momentum</text>
+              <rect x="24" y="104" width="10" height="10" fill="#C9D1B6"/>
+              <rect x="290" y="98" width="10" height="10" fill="#C9D1B6"/>
+              <rect x="154" y="184" width="12" height="12" fill="#F4A39B"/><text x="172" y="196">Midterm 1</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>5</b></div>
+          <h3>Start Klair</h3>
+          <p>There are two ways to run it:</p>
+          <ul>
+            <li><b><code>pnpm app</code></b> builds a signed <b>Klair.app</b>, copies your <code>.env.local</code> next to it and opens it. This is the one to use day to day, because macOS remembers its permissions.</li>
+            <li><b><code>pnpm dev</code></b> runs with hot reload, for working on Klair itself. macOS then grants permissions to the app you launched it from (Terminal, VS Code…).</li>
+          </ul>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="pnpm app">Copy</button></div>
+<pre><span class="p">$ </span>pnpm app      <span class="c"># run it again after pulling changes or editing .env.local</span></pre>
+          </div>
+          <p>The flower appears in your menu bar and the <b>Start window</b> opens. Each row goes green as it's set up, and <b>Check again</b> re-tests them.</p>
+          <p class="note">Only one Klair runs at a time. If <code>pnpm dev</code> exits right away, quit <code>Klair.app</code> from the menu bar first.</p>
+        </div>
+        <div class="mock glass" aria-label="Klair's Start window">
+          <div class="mock-title"><canvas class="pixelated" data-flower="30"></canvas><div><span class="label" style="font-size:11px">Klair</span><b>Start a session</b></div></div>
+          <ul class="rows">
+            <li><span class="st"></span><span><b>Screen recording</b><small>Allowed</small></span></li>
+            <li><span class="st warn"></span><span><b>The fn key</b><small>Use ⌃⌥K until Input Monitoring is on</small></span><span class="mini">Allow</span></li>
+            <li><span class="st"></span><span><b>AI models via OpenRouter</b><small>Key works · gemini-3.5-flash-lite</small></span></li>
+            <li><span class="st"></span><span><b>Graphify</b><small>Found in ~/.local/bin</small></span></li>
+            <li><span class="st warn"></span><span><b>TigerData database</b><small>Not set: projects stay on this Mac</small></span></li>
+          </ul>
+          <div class="foot"><span class="btn">Not now <kbd>esc</kbd></span><span class="btn dark">Start session <kbd>⌘↵</kbd></span></div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>6</b></div>
+          <h3>Allow screen recording</h3>
+          <p>Klair needs to see your screen during a session. In the Start window:</p>
+          <ol>
+            <li>Click <b>Allow</b> on the <b>Screen recording</b> row.</li>
+            <li>In System Settings › Privacy &amp; Security › <b>Screen &amp; System Audio Recording</b>, switch Klair on.</li>
+            <li><b>Quit Klair and open it again.</b> macOS only applies the permission after a restart.</li>
+          </ol>
+          <p class="note warn">Settings says Klair is allowed but the app says it isn't? The entry is stale. Run <code>tccutil reset ScreenCapture com.klair.app</code> and allow it again.</p>
+          <p>Klair asks for the Downloads folder the first time a session starts, so it can offer new downloads. That one's optional.</p>
+        </div>
+        <div class="mock" aria-label="System Settings, screen recording">
+          <div class="sys-head">
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="1" y="2" width="12" height="9" rx="2" fill="none" stroke="#686D60" stroke-width="1.5"/><rect x="5" y="11" width="4" height="2" fill="#686D60"/></svg>
+            Privacy &amp; Security › Screen &amp; System Audio Recording
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="toggle-row"><span class="app"><canvas class="pixelated" data-flower="14"></canvas></span>Klair<span class="switch"></span></div>
+            <div class="toggle-row"><span class="app" style="background:#2D3128;border-color:#2D3128"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 4 L6 7 L3 10" stroke="#fff" stroke-width="1.6" fill="none"/><rect x="7" y="9.5" width="4" height="1.5" fill="#fff"/></svg></span>Terminal<small style="color:var(--muted);font-weight:500">for pnpm dev</small><span class="switch off"></span></div>
+          </div>
+          <p class="note" style="margin-top:14px;font-size:13.5px!important">Klair's own windows are excluded from capture, so it never sees itself.</p>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>7</b><span class="opt">Optional</span></div>
+          <h3>Add the Chrome extension</h3>
+          <p>So Klair can read whole web pages and highlight the passages an answer is about:</p>
+          <ol>
+            <li>Open <code>chrome://extensions</code> in Chrome.</li>
+            <li>Switch on <b>Developer mode</b> (top right).</li>
+            <li>Click <b>Load unpacked</b> and choose the <code>extension</code> folder inside your <code>Klair</code> folder.</li>
+          </ol>
+          <p>The Start window's <b>Chrome extension</b> row turns green within a minute. Pages are only sent while a session is observing, never from incognito, and only to Klair on your own Mac (<code>127.0.0.1</code>).</p>
+          <p class="note">After pulling new code, click reload ↻ on the extension's card. PDFs open in Chrome's viewer can't be read by extensions, so download them and add them instead.</p>
+        </div>
+        <div class="mock" aria-label="Chrome's extensions page">
+          <div class="sys-head" style="justify-content:space-between">chrome://extensions <span style="display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)">Developer mode <span class="switch" style="width:32px;height:18px"></span></span></div>
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span class="mini btn" style="height:34px;font-size:13px;padding:0 12px;border-color:#EBB8B2;box-shadow:0 2px 0 #EBB8B2;background:var(--blush)">Load unpacked</span><span class="mini btn" style="height:34px;font-size:13px;padding:0 12px">Pack extension</span></div>
+          <div class="ext-card">
+            <span class="icon"><canvas class="pixelated" data-flower="16"></canvas></span>
+            <div style="flex:1;min-width:0"><b>Klair for Chrome</b><small>Sends the pages you open to Klair while a session is observing, and marks the passages its answers are about.</small><div class="id">ID: jndibkpbjoldneahpgmofeoekkpeaepo</div></div>
+            <span class="switch" style="width:32px;height:18px"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="istep rv">
+        <div class="txt">
+          <div class="num"><b>8</b><span class="opt">Optional</span></div>
+          <h3>Use the fn key</h3>
+          <p>Out of the box, Klair opens with <kbd>⌃⌥K</kbd>. To use plain <kbd>fn</kbd> instead, build the small native add-on, then allow <b>Input Monitoring</b> from the Start window's fn row and click <b>Check again</b>.</p>
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>Terminal</span><button class="copy" type="button" data-copy="pnpm build:native
+pnpm app">Copy</button></div>
+<pre><span class="p">$ </span>pnpm build:native
+<span class="p">$ </span>pnpm app       <span class="c"># bundles the add-on into Klair.app</span></pre>
+          </div>
+          <p class="note warn">If macOS uses fn for the emoji picker or dictation, go to System Settings › Keyboard › "Press 🌐 key to" and choose <b>Do Nothing</b>. Or just keep using <kbd>⌃⌥K</kbd>.</p>
+        </div>
+        <div class="mock glass" style="display:flex;flex-direction:column;align-items:center;gap:18px;padding:30px 18px" aria-label="fn and its fallback">
+          <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center">
+            <kbd style="font-size:28px;padding:18px 22px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">fn</kbd>
+            <span style="color:var(--muted);font-weight:600">or</span>
+            <span style="display:flex;gap:6px"><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">⌃</kbd><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">⌥</kbd><kbd style="font-size:22px;padding:16px 18px;border-radius:12px;box-shadow:0 4px 0 var(--line-4)">K</kbd></span>
+          </div>
+          <p style="font-size:14.5px;color:var(--ink-2);text-align:center;max-width:320px">The whole fn family has the same fallback: <kbd>⌃⌥P</kbd> pause, <kbd>⌃⌥Q</kbd> quiet, <kbd>⌃⌥H</kbd> hide, <kbd>⌃⌥1–9</kbd> switch project.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="walk rv">
+      <div>
+        <span class="label" style="color:#B9C893">Your first session</span>
+        <h3 style="margin-top:10px">Two minutes to your first answer.</h3>
+        <p>Once the Start window is green, try this with any article you're studying.</p>
+      </div>
+      <ol>
+        <li>In the Start window, make a project (say "ML"), tick it and press <kbd>⌘↵</kbd>. The flower appears in the top-right corner.</li>
+        <li>Open an article and stay on one section. After a minute, "N ideas for this section" appears beside the flower.</li>
+        <li>Tap <kbd>fn</kbd> (or <kbd>⌃⌥K</kbd>). The panel opens over the corner with where you are and the ideas.</li>
+        <li>Press <kbd>⌘2</kbd>. The answer streams in. Try <kbd>⌘⇧1</kbd> for a shorter version.</li>
+        <li>Press <kbd>⌘S</kbd> and drag over a figure to ask about just that part.</li>
+        <li>Press <kbd>esc</kbd> to close. When you're done, choose <b>End</b> in the menu bar and the project's graph rebuilds.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Keys -->
+<section class="block" id="keys">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label">Keyboard</span>
+      <h2>Your hands never leave the keys.</h2>
+      <p>Only the fn family works everywhere. The ⌘ shortcuts work only while Klair's panel is open, so <kbd>⌘1</kbd> still switches browser tabs the rest of the time. Press <kbd>⌘/</kbd> in the panel for the full list.</p>
+    </div>
+    <div class="keys">
+      <div class="keygroup rv">
+        <h3>Anywhere <small>(global)</small></h3>
+        <dl>
+          <dt><kbd>fn</kbd><span class="or">or</span><kbd>⌃⌥K</kbd></dt><dd>Open or close Klair</dd>
+          <dt><kbd>fn H</kbd><span class="or">or</span><kbd>⌃⌥H</kbd></dt><dd>Hide the panel and bring it back unchanged</dd>
+          <dt><kbd>fn P</kbd><span class="or">or</span><kbd>⌃⌥P</kbd></dt><dd>Pause or resume observing</dd>
+          <dt><kbd>fn Q</kbd><span class="or">or</span><kbd>⌃⌥Q</kbd></dt><dd>Quiet ideas for 30 minutes</dd>
+          <dt><kbd>fn 1–9</kbd><span class="or">or</span><kbd>⌃⌥1–9</kbd></dt><dd>Switch the active project</dd>
+        </dl>
+      </div>
+      <div class="keygroup rv">
+        <h3>In the panel</h3>
+        <dl>
+          <dt><kbd>⌘1–9</kbd></dt><dd>Pick an idea</dd>
+          <dt><kbd>⌘↑</kbd><kbd>⌘↓</kbd></dt><dd>Move between ideas</dd>
+          <dt><kbd>⌘K</kbd></dt><dd>Ask your own question</dd>
+          <dt><kbd>⌘S</kbd></dt><dd>Select an area of the screen</dd>
+          <dt><kbd>⌘/</kbd></dt><dd>Show all keys</dd>
+          <dt><kbd>esc</kbd></dt><dd>Close</dd>
+        </dl>
+      </div>
+      <div class="keygroup rv">
+        <h3>On an answer</h3>
+        <dl>
+          <dt><kbd>⌘⇧1–3</kbd></dt><dd>Shorter · Simpler · More detail</dd>
+          <dt><kbd>⌘[</kbd></dt><dd>Back to ideas</dd>
+          <dt><kbd>⌘R</kbd></dt><dd>Retry</dd>
+        </dl>
+      </div>
+      <div class="keygroup rv">
+        <h3>Menu bar popover</h3>
+        <dl>
+          <dt><kbd>⌘P</kbd> <kbd>⌘E</kbd></dt><dd>Pause · End the session</dd>
+          <dt><kbd>⌘1–3</kbd></dt><dd>Pause time: 30 s · 1 min · 2 min</dd>
+          <dt><kbd>⌘L</kbd> <kbd>⌘O</kbd></dt><dd>Last answer · All sessions</dd>
+          <dt><kbd>⌘G</kbd></dt><dd>Knowledge graph</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Privacy -->
+<section class="block tint" id="privacy">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="label">Privacy</span>
+      <h2>Your screen stays yours.</h2>
+      <p>Klair is local-first. Here's exactly what goes where.</p>
+    </div>
+    <div class="privacy">
+      <div class="pcard rv">
+        <div class="ttl"><i style="background:var(--sage)"></i><h3>Kept on your Mac</h3></div>
+        <ul>
+          <li>Screenshots, selected areas and added files</li>
+          <li>Every project's notes, ideas, answers and pages, in SQLite</li>
+          <li>Each project's knowledge graph</li>
+          <li>Deleted automatically after 14 days (you can change this)</li>
+        </ul>
+        <span class="path">~/Library/Application Support/Klair/</span>
+      </div>
+      <div class="pcard rv">
+        <div class="ttl"><i style="background:var(--rose)"></i><h3>Sent to AI models</h3></div>
+        <ul>
+          <li>Each new screen, to write its note</li>
+          <li>Up to 15k characters of the Chrome page you're on</li>
+          <li>For an answer: the screen note, the page, a recent file, and only the related earlier notes</li>
+          <li>All through OpenRouter, using your own key</li>
+        </ul>
+      </div>
+      <div class="pcard rv">
+        <div class="ttl"><i style="background:#E9B44C"></i><h3>Optional cloud copy</h3></div>
+        <ul>
+          <li>Only if you set <code>DATABASE_URL</code></li>
+          <li>Text and metadata only. Images and files never leave your Mac.</li>
+          <li>Uploaded to your own TigerData database after each session</li>
+          <li>Deleting a project removes it there too</li>
+        </ul>
+      </div>
+    </div>
+    <p class="rv" style="margin-top:24px;font-size:15.5px;color:var(--ink-2);text-align:center">Pause anytime with <kbd>fn P</kbd>. Downloads are never read until you click <b>Add</b>, and the Chrome extension sends nothing from incognito windows.</p>
+  </div>
+</section>
+
+<!-- Troubleshooting -->
+<section class="block" id="help">
+  <div class="wrap">
+    <div class="head center rv">
+      <span class="label">Troubleshooting</span>
+      <h2>If something's off</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>Screen recording says "not allowed" after I allowed it</summary>
+        <div class="a"><p>macOS applies the permission only after the app restarts. Quit Klair from the menu bar and open it again. With <code>pnpm dev</code>, the permission belongs to the app you ran it from (the Start window names it). Allow that app, quit it with <kbd>⌘Q</kbd>, and run <code>pnpm dev</code> again.</p></div>
+      </details>
+      <details>
+        <summary>No ideas appear</summary>
+        <div class="a"><p>Open the Start window and check that "Where your data lives" and the AI models row are green. The screen also has to stay put for the pause time (1 minute by default). Opening the panel asks for ideas immediately.</p></div>
+      </details>
+      <details>
+        <summary>The ⌘ shortcuts do nothing</summary>
+        <div class="a"><p>They only work while the panel is open and focused. Click the panel once if another app took focus.</p></div>
+      </details>
+      <details>
+        <summary>Klair.app shows the AI models or TigerData in red, but pnpm dev works</summary>
+        <div class="a"><p>The app reads its settings from <code>~/Library/Application Support/Klair</code>. Run <code>pnpm app</code> again to copy your <code>.env.local</code> there.</p></div>
+      </details>
+      <details>
+        <summary>The knowledge graph stays empty</summary>
+        <div class="a"><p>Graphify needs its OpenAI backend to reach OpenRouter. Run <code>pipx inject graphifyy openai</code>, click <b>Check again</b>, then <b>Rebuild graph</b> in the Knowledge graph pane.</p></div>
+      </details>
+      <details>
+        <summary>TigerData: "Connection terminated due to connection timeout"</summary>
+        <div class="a"><p>Usually the network. Some campus and office Wi-Fi block the port. Sessions keep saving on your Mac and upload later, so try a hotspot or VPN, then <b>Check again</b>.</p></div>
+      </details>
+      <details>
+        <summary>The Chrome extension says "Klair isn't running"</summary>
+        <div class="a"><p>Make sure Klair is open and a session is observing. Reload the extension (↻ in <code>chrome://extensions</code>) after pulling new code, and reload tabs that were open before you installed it.</p></div>
+      </details>
+    </div>
+    <p class="rv" style="text-align:center;margin-top:28px;font-size:15.5px;color:var(--ink-2)">More in the <a href="https://github.com/evandong1976/Klair#troubleshooting" target="_blank" rel="noopener">README</a>, or <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">open an issue</a>.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta tint" style="border-bottom:0">
+  <div class="wrap">
+    <canvas class="big pixelated" id="ctaFlower" title="Click me" aria-hidden="true"></canvas>
+    <h2>Let the flower take notes.</h2>
+    <p>Klair is open source. Read the code, open an issue, or make it yours.</p>
+    <div class="ctas">
+      <a class="btn dark" href="https://github.com/evandong1976/Klair" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#gh"/></svg>
+        Star Klair on GitHub
+      </a>
+      <a class="btn" href="#install">Install guide</a>
+    </div>
+    <div><span class="repo">git clone https://github.com/evandong1976/Klair.git <button class="copy" type="button" data-copy="git clone https://github.com/evandong1976/Klair.git">Copy</button></span></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><canvas class="pixelated" data-flower="16"></canvas>Klair</a>
+    <span>A background study assistant for macOS.</span>
+    <div class="right">
+      <a href="https://github.com/evandong1976/Klair" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/evandong1976/Klair#readme" target="_blank" rel="noopener">README</a>
+      <a href="https://github.com/evandong1976/Klair/issues" target="_blank" rel="noopener">Issues</a>
+      <span>Set in <a href="http://pampatype.com" target="_blank" rel="noopener">Reforma 1918</a> by PampaType (<a href="assets/fonts/LICENSE.txt">CC BY-ND 4.0</a>)</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
