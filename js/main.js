@@ -464,6 +464,7 @@ $('#back').addEventListener('click', () => (stopAutoplay(), back()));
 document.addEventListener('keydown', (e) => {
   if (!demoVisible || e.metaKey || e.ctrlKey || e.altKey) return;
   if (e.target.closest?.('input, textarea, [contenteditable]')) return;
+  if (document.activeElement !== document.body && !frame.contains(document.activeElement)) return;
   const k = e.key.toLowerCase();
   let handled = true;
   if (k === 'k' || k === 'f') state === 'rest' ? open() : close();
@@ -499,7 +500,7 @@ new IntersectionObserver(
       setTimeout(() => autoplay && pick(1), 6200),
     );
   },
-  { threshold: 0.35 },
+  { threshold: 0.7 },
 ).observe(frame);
 
 // Stop the tour as soon as the visitor touches the demo.

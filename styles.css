@@ -526,7 +526,7 @@ footer .right { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
   .istep h3 { font-size: 20px; }
   .istep .body { gap: 22px; padding: 4px 16px 0; }
   .step-foot { margin: 20px 16px 16px; }
-  .rail { top: 75px; gap: 6px; padding: 6px 8px; }
+  .rail { top: 104px; gap: 6px; padding: 6px 8px; }
   .rail ol { flex: 1; gap: 0; }
   .rail li { flex: 1; }
   .rail li a { justify-content: center; padding: 0; }
@@ -549,3 +549,26 @@ footer .right { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
 .stage.narrow .toc { display: none; }
 .stage.narrow .article { grid-template-columns: 1fr; padding: 24px 24px 0 46px; }
 .stage.narrow .browser { left: 14px; right: 14px; }
+
+/* Hidden means hidden, even on flex containers */
+[hidden] { display: none !important; }
+
+/* Demo: badges sit before the marked text instead of on top of it; the panel scrolls rather than clipping its hints */
+.mark .badge { position: static; display: inline-block; margin-right: 6px; vertical-align: 1px; color: var(--ink); }
+.mark:not(.on) .badge { display: none; }
+.panel { overflow-y: auto; }
+.ask { opacity: 0.55; cursor: default; }
+
+/* Phones: keep the section links as a scrollable row, bigger tap targets, no clipped clone line */
+@media (max-width: 760px) {
+  html { scroll-padding-top: 116px; }
+  .nav .wrap { flex-wrap: wrap; height: auto; padding-top: 10px; row-gap: 0; }
+  .nav-links { display: flex; order: 3; width: 100%; margin: 0; gap: 20px; overflow-x: auto; scrollbar-width: none; }
+  .nav-links a { line-height: 44px; white-space: nowrap; }
+  .rail { top: 104px; }
+  .term-bar { height: 44px; }
+  .copy { height: 36px; padding: 0 12px; }
+  .faq summary { min-height: 44px; }
+  .repo { flex-wrap: wrap; justify-content: center; max-width: 100%; word-break: break-all; }
+  .hero-bg.b { display: none; }
+}
